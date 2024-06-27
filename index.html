@@ -53,10 +53,10 @@
                 .then(data => {
                     const resultDiv = document.getElementById('result');
                     if (data.exists) {
-                        resultDiv.textContent = 'AntiModders.cs file exists (No cheaters have deleted the anticheat)';
+                        resultDiv.textContent = 'AntiModders.cs file exists (No modders have deleted the anticheat)';
                         resultDiv.style.color = 'green';
                     } else {
-                        resultDiv.textContent = 'AntiModders.cs file does not exist (Thus meaning a cheater deleted it)';
+                        resultDiv.textContent = 'AntiModders.cs file does not exist (Thus meaning a modders deleted it)';
                         resultDiv.style.color = 'red';
                     }
                 })
