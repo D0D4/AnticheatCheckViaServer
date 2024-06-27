@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pugls Anticheat Testing Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Check AntiModders.cs Status</h1>
+        <button id="checkButton">Check if AntiModders.cs Exists</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('checkButton').addEventListener('click', function() {
+            fetch('Functions/checkScript')
+                .then(response => response.json())
+                .then(data => {
+                    const resultDiv = document.getElementById('result');
+                    if (data.exists) {
+                        resultDiv.textContent = 'AntiModders.cs file exists (No cheaters have deleted the anticheat)';
+                        resultDiv.style.color = 'green';
+                    } else {
+                        resultDiv.textContent = 'AntiModders.cs file does not exist (Thus meaning a cheater deleted it)';
+                        resultDiv.style.color = 'red';
+                    }
+                })
+                .catch(error => {
+                    const resultDiv = document.getElementById('result');
+                    resultDiv.textContent = 'Error checking script status.';
+                    resultDiv.style.color = 'red';
+                });
+        });
+    </script>
+</body>
+</html>
