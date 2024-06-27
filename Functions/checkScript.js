@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 exports.handler = async (event, context) => {
-  const scriptPath = path.join(__dirname, 'path_to_your_script_file');
+  const scriptPath = path.join(__dirname, 'AntiModders.cs');
 
   try {
     if (fs.existsSync(scriptPath)) {
